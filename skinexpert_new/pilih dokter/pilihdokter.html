@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://fonts.googleapis.com/css2?family=Clicker+Script&family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Doctor Consultation</title>
+    <link rel="stylesheet" href="dokter.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div>
+                <section >
+                    <div class="logo">
+                        <img class="img" src="../gambar/Desain tanpa judul.png" alt="">
+                        <div class="logo-text">
+                            <a href="../beranda/beranda.html"> SKINEXPERT </a>
+                        </div>
+                        <div class="logo-text-flex">
+                            <div class="logo-text-link"> <a href="">Scan Ai</a></div>
+                            <div class="logo-text-link"> <a href="pilihdokter.html">Konsultasi</a></div>
+                            <div class="logo-text-link"> <a href="">SkinCare</a></div>
+                        </div>
+                        
+                
+                    </div>
+                    
+                </section>
+
+            </div>
+
+            <div>
+                <section>
+                    <div class=" ikon-post">
+                        <div class="ikon">
+                            <a href="">
+                                <img src="../ikon/search.png" alt="">
+                            </a>
+                            <a href="">
+                                <img src="../ikon/icons8-menu-64.png" alt="">
+                            </a>
+                            <a href="" >
+                                <img src="../ikon/icons8-notification-64.png" alt="">
+                            </a>
+                            <a href="">
+                                <img src="../ikon/chat.png" alt="">
+                            </a>
+                            <a href="">
+                                <img src="../ikon/shopping-cart (1).png" alt="">
+                            </a>
+                            <a href="" id="user-icon">
+                                <img src="../ikon/user.png" alt="">
+                            </a>
+                        </div>
+    
+                    </div>
+    
+                </section>
+            </div>
+
+            
+
+        </nav>
+
+    </header>
+
+<!-- Pop-up Modal -->
+<div class="popup" id="userPopup">
+      <ul>
+        <li><a href="#">Sign Up/Sign In</a></li>
+        <li><a href="#">Detail Pesanan</a></li>
+        <li><a href="#">Hasil Scan AI</a></li>
+        <li><a href="../Setting/index.html">Settings</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+</div>
+
+<!-- Overlay -->
+
+<script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const userIcon = document.querySelector('a[href=""] > img[src="../ikon/user.png"]');
+        const popup = document.getElementById("userPopup");
+        
+        userIcon.parentElement.addEventListener("click", function (event) {
+          event.preventDefault(); // Prevent the default anchor click behavior
+          event.stopPropagation(); // Stop click event from propagating to document
+          const rect = userIcon.getBoundingClientRect();
+          popup.style.top = rect.bottom + "px";
+          popup.style.left = rect.left + "px";
+          popup.style.display = popup.style.display === "block" ? "none" : "block";
+        });
+        
+        document.addEventListener("click", function (event) {
+          if (!userIcon.contains(event.target) && !popup.contains(event.target)) {
+            popup.style.display = "none";
+          }
+        });
+        
+        popup.addEventListener("click", function (event) {
+          event.stopPropagation(); // Prevent click event from closing the popup
+        });
+      });
+    </script>
+
+
+
+
+
+    <div class="container">
+
+        <div class="content">
+            <div class="filter">
+                <h3>FILTER</h3>
+                <label>Ulasan Dokter:</label>
+                <input type="text" placeholder=" ">
+                <label>Biaya Konsultasi:</label>
+                <input type="text" placeholder=" ">
+                <label>Waktu Tersedia:</label>
+                <input type="text" placeholder=" ">
+                <button>Cari</button>
+            </div>
+
+            <div class="doctor-list">
+                <div class="doctor-card">
+                    <div class="doctor-card-info">
+                        <div>
+                            <img src="../gambar/orrii-removebg.png" alt="Dr. Richard">
+                        </div>
+                        <div>
+                            <h4>Dr. Richard</h4>
+                            <p>Jl. Kb. Jukut No.7, Babakan..</p>
+                            <p class="availability">Tersedia hari ini</p>
+                
+                        </div> 
+                    </div>
+                    <div>
+                        <div class="doctor-info">
+                            <div class="rating">
+                                <b><p>ULASAN DOKTER</p></b>
+                                <span>⭐ 4,5/5 (130)</span>
+                                <p>Biaya konsultasi<br>Rp 100.000</p>
+                                <button>Konsultasi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="doctor-card">
+                    <div class="doctor-card-info">
+                        <div>
+                            <img src="../gambar/orrii-removebg.png" alt="Dr. Richard">
+                        </div>
+                        <div>
+                            <h4>Dr. Richard</h4>
+                            <p>Jl. Kb. Jukut No.7, Babakan..</p>
+                            <p class="availability">Tersedia hari ini</p>
+                
+                        </div> 
+                    </div>
+
+                    <div>
+                        <div class="doctor-info">
+                            <div class="rating">
+                                <b><p>ULASAN DOKTER</p></b>
+                                <span>⭐ 4,5/5 (130)</span>
+                                <p>Biaya konsultasi<br>Rp 100.000</p>
+                                <button>Konsultasi</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+
+
+                <div class="doctor-card">
+                    <div class="doctor-card-info">
+                        <div>
+                            <img src="../gambar/orrii-removebg.png" alt="Dr. Richard">
+                        </div>
+                        <div>
+                            <h4>Dr. Richard</h4>
+                            <p>Jl. Kb. Jukut No.7, Babakan..</p>
+                            <p class="availability">Tersedia hari ini</p>
+                
+                        </div> 
+                    </div>
+
+                    <div>
+                        <div class="doctor-info">
+                            <div class="rating">
+                                <p><b>ULASAN DOKTER</b></p>
+                                <span>⭐ 4,5/5 (130)</span>
+                                <p>Biaya konsultasi<br>Rp 100.000</p>
+                                <button>Konsultasi</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
