@@ -15,8 +15,10 @@ if ($row == "") { //username tidak ditemukan
 } else { //username ditemukan
     if (md5($katasandi) == $row['katasandi']) { //username dan password match
         session_start();
+        $_SESSION['logged_in'] = true;
         $_SESSION['email'] = $row['email'];
         header("location:beranda.php");
+        exit(); 
     } else {
         $errMsg = "Password salah!";
         header("location:login.php?errorMsg=$errMsg");

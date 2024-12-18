@@ -32,7 +32,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
         <a href="main_admin.php">Daftar Produk</a>
         <a href="">User</a>
         <a href="#settings">Daftar Toko</a>
-        <a href="#logout">Logout</a>
+        <a href="logout_admin.php">Logout</a>
     </div>
 
     <!-- Konten Utama -->

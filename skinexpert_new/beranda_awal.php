@@ -1,11 +1,4 @@
 <?php
-session_start();
-
-// Cek apakah pengguna sudah login
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header("Location: login.php");
-    exit();
-}
 
 include 'dbskin.php';
 
@@ -32,7 +25,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
     <style>
         * {
-            overscroll-behavior: none ;
+            overscroll-behavior: none;
             font-family: "Poppins", serif;
             padding: 0;
             margin: 0;
@@ -145,27 +138,33 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
         }
 
         .logo-text-link a:hover {
-    color: var(--primary-color);
-    font-weight: bold;
-    text-decoration: underline;
-}
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: underline;
+        }
 
         .logo-text-link a {
-    text-decoration: none;
-    color: black;
-    transition: color 0.3s, text-decoration 0.3s; /* Smooth effect */
-}
+            text-decoration: none;
+            color: black;
+            transition: color 0.3s, text-decoration 0.3s;
+            /* Smooth effect */
+        }
 
-.logo-text-link a.active {
-    font-weight: bold;
-    text-decoration: underline;
-    color: var(--primary-color);
-}
+        .logo-text-link a.active {
+            font-weight: bold;
+            text-decoration: underline;
+            color: var(--primary-color);
+        }
 
-       
+
+        .ikon-post {
+            margin-right: 1rem;
+        }
+
 
         .ikon {
-            margin-top: 0.5rem;
+
+            /* margin-top: 0.5rem; */
             display: flex;
             justify-content: flex-end;
             align-items: center;
@@ -173,9 +172,26 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
         }
 
-        .ikon img {
-            justify-content: center;
-            width: 50%;
+        .tombol-login {
+            padding-right: 1rem;
+            padding-left: 1rem;
+            padding-top: 0.2rem;
+            padding-bottom: 0.2rem;
+            border: 1px solid var(--primary-color);
+            margin-left: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            background-color: var(--primary-color);
+        }
+
+        .tombol-login:hover {
+            color: var(--primary-color);
+            background-color: white;
+        }
+
+        .tombol-login h4 {
+            font-weight: 500;
         }
 
 
@@ -465,36 +481,35 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 </head>
 
 <body>
-    <!-- <header>
+    <header>
         <nav>
             <div>
                 <section>
                     <div class="logo">
                         <img class="img" src="./gambar/Desain tanpa judul.png" alt="">
                         <div class="logo-text">
-                            <a href="beranda.php"> SKINEXPERT </a>
+                            <a href="beranda_awal.php"> SKINEXPERT </a>
                         </div>
-                       <div class="logo-text-flex">
-                            <div class="logo-text-link"><a href="beranda.php" id="beranda">Beranda</a></div>
+                        <div class="logo-text-flex">
+                            <div class="logo-text-link"><a href="beranda_awal.php" id="beranda">Beranda</a></div>
                             <div class="logo-text-link"><a href="scan.php" id="scan">Scan Ai</a></div>
                             <div class="logo-text-link"><a href="pilihdokter.php" id="konsultasi">Konsultasi</a></div>
                             <div class="logo-text-link"><a href="skincare.php" id="skincare">SkinCare</a></div>
                         </div>
-                <script>
-                    
-                    const currentUrl = window.location.pathname;
+                        <script>
+                            const currentUrl = window.location.pathname;
 
-                    
-                    if (currentUrl.includes("beranda.php")) {
-                        document.getElementById("beranda").classList.add("active");
-                    } else if (currentUrl.includes("scan.php")) {
-                        document.getElementById("scan").classList.add("active");
-                    } else if (currentUrl.includes("pilihdokter.php")) {
-                        document.getElementById("konsultasi").classList.add("active");
-                    } else if (currentUrl.includes("skincare.php")) {
-                        document.getElementById("skincare").classList.add("active");
-                    }
-                </script>
+
+                            if (currentUrl.includes("beranda_awal.php")) {
+                                document.getElementById("beranda").classList.add("active");
+                            } else if (currentUrl.includes("scan.php")) {
+                                document.getElementById("scan").classList.add("active");
+                            } else if (currentUrl.includes("pilihdokter.php")) {
+                                document.getElementById("konsultasi").classList.add("active");
+                            } else if (currentUrl.includes("skincare.php")) {
+                                document.getElementById("skincare").classList.add("active");
+                            }
+                        </script>
 
 
 
@@ -508,24 +523,19 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                 <section>
                     <div class=" ikon-post">
                         <div class="ikon">
-                            <a href="">
-                                <img src="./ikon/search.png" alt="">
+
+                            <a class="tombol-login" href="login.php">
+
+                                <h4>Login</h4>
+
                             </a>
-                            <a href="">
-                                <img src="./ikon/icons8-menu-64.png" alt="">
+                            <a class="tombol-login" href="signup.php">
+
+                                <h4>Daftar</h4>
+
+
                             </a>
-                            <a href="">
-                                <img src="./ikon/icons8-notification-64.png" alt="">
-                            </a>
-                            <a href="">
-                                <img src="./ikon/chat.png" alt="">
-                            </a>
-                            <a href="keranjang.php">
-                                <img src="./ikon/shopping-cart (1).png" alt="">
-                            </a>
-                            <a href="" id="user-icon">
-                                <img src="./ikon/user.png" alt="">
-                            </a>
+
                         </div>
 
                     </div>
@@ -548,10 +558,10 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
             <li><a href="../Setting/index.html">Settings</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
-        
+
     </div>
 
-    
+
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -559,8 +569,8 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
             const popup = document.getElementById("userPopup");
 
             userIcon.parentElement.addEventListener("click", function(event) {
-                event.preventDefault(); 
-                event.stopPropagation(); 
+                event.preventDefault();
+                event.stopPropagation();
                 const rect = userIcon.getBoundingClientRect();
                 popup.style.top = rect.bottom + "px";
                 popup.style.left = rect.left + "px";
@@ -574,11 +584,11 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
             });
 
             popup.addEventListener("click", function(event) {
-                event.stopPropagation(); 
+                event.stopPropagation();
             });
         });
-    </script> -->
-    <?php include 'header.php';  ?>
+    </script>
+
 
 
     <main>
@@ -731,7 +741,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                         <button type="submit" name="submit-keranjang">
                                             <p class="tombol-keranjang">Keranjang</p>
                                         </button>
-                                    </form> 
+                                    </form>
                                 </div>
                             </a>
                         </div>

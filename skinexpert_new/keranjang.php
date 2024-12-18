@@ -13,11 +13,13 @@ $query = "
 ";
 
 $result = mysqli_query($conn, $query);
-
+$row = mysqli_fetch_assoc($result);
 if (!$result) {
     die("Query failed: " . mysqli_error($conn));
 }
 $total_harga = 0;
+
+
 ?>
 
 </html>
@@ -36,98 +38,8 @@ $total_harga = 0;
 </head>
 
 <body>
-    <header>
-        <nav>
-            <div>
-                <section>
-                    <div class="logo">
-                        <img class="img" src="./gambar/Desain tanpa judul.png" alt="">
-                        <div class="logo-text">
-                            <a href="beranda.php"> SKINEXPERT </a>
-                        </div>
-                        <div class="logo-text-flex">
-                            <div class="logo-text-link"> <a href="">Scan Ai</a></div>
-                            <div class="logo-text-link"> <a href="../pilih dokter/pilihdokter.html">Konsultasi</a></div>
-                            <div class="logo-text-link"> <a href="">SkinCare</a></div>
-                        </div>
 
-
-                    </div>
-
-                </section>
-
-            </div>
-
-            <div>
-                <section>
-                    <div class=" ikon-post">
-                        <div class="ikon">
-                            <a href="">
-                                <img src="./ikon/search.png" alt="">
-                            </a>
-                            <a href="">
-                                <img src="./ikon/icons8-notification-64.png" alt="">
-                            </a>
-                            <a href="">
-                                <img src="./ikon/chat.png" alt="">
-                            </a>
-                            <a href="">
-                                <img src="./ikon/shopping-cart (1).png" alt="">
-                            </a>
-                            <a href="" id="user-icon">
-                                <img src="./ikon/user.png" alt="">
-                            </a>
-                        </div>
-
-                    </div>
-
-                </section>
-            </div>
-
-
-
-        </nav>
-
-    </header>
-
-    <!-- Pop-up Modal -->
-    <div class="popup" id="userPopup">
-        <ul>
-            <li><a href="login.php">Sign Up/Sign In</a></li>
-            <li><a href="#">Detail Pesanan</a></li>
-            <li><a href="hasilAi.html">Hasil Scan AI</a></li>
-            <li><a href="../Setting/index.html">Settings</a></li>
-            <li><a href="logout.php">Logout</a></li>
-        </ul>
-    </div>
-
-    <!-- Overlay -->
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const userIcon = document.querySelector('a[href=""] > img[src="./ikon/user.png"]');
-            const popup = document.getElementById("userPopup");
-
-            userIcon.parentElement.addEventListener("click", function(event) {
-                event.preventDefault(); // Prevent the default anchor click behavior
-                event.stopPropagation(); // Stop click event from propagating to document
-                const rect = userIcon.getBoundingClientRect();
-                popup.style.top = rect.bottom + "px";
-                popup.style.left = rect.left + "px";
-                popup.style.display = popup.style.display === "block" ? "none" : "block";
-            });
-
-            document.addEventListener("click", function(event) {
-                if (!userIcon.contains(event.target) && !popup.contains(event.target)) {
-                    popup.style.display = "none";
-                }
-            });
-
-            popup.addEventListener("click", function(event) {
-                event.stopPropagation(); // Prevent click event from closing the popup
-            });
-        });
-    </script>
+    <?php include 'header.php'; ?>
 
     <main>
         <section>
@@ -182,7 +94,7 @@ $total_harga = 0;
                                             </div>
                                             <!-- Harga produk -->
                                             <div class="harga-produk">
-                                                <p>Rp <?php echo number_format($row['harga'] * $row['jumlah'], 2, ',', '.'); ?></p>
+                                                <p>Rp <?php echo number_format($row['harga'] , 2, ',', '.'); ?></p>
                                                 <form method="POST" action="delete_cart.php">
                                                     <input type="hidden" name="id_keranjang" value="<?php echo $row['id_keranjang']; ?>">
                                                     <button type="submit" class="tombol-hapus">Hapus</button>

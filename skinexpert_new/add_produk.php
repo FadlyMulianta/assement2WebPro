@@ -57,7 +57,7 @@ if (isset($_POST['btnSimpan'])) {
         <a href="main_admin.php">Daftar Produk</a>
         <a href="">User</a>
         <a href="#settings">Daftar Toko</a>
-        <a href="#logout">Logout</a>
+        <a href="lodout_admin.php">Logout</a>
     </div>
 
     <!-- Konten Utama -->
