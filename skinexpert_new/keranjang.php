@@ -11,15 +11,12 @@ $query = "
     JOIN produk p ON k.id_produk = p.id_produk
     WHERE k.email = '$email'
 ";
-
 $result = mysqli_query($conn, $query);
-$row = mysqli_fetch_assoc($result);
+
 if (!$result) {
     die("Query failed: " . mysqli_error($conn));
 }
 $total_harga = 0;
-
-
 ?>
 
 </html>
@@ -54,6 +51,9 @@ $total_harga = 0;
                                 <tr>
                                     <td>
                                         <div class="keranjang-produk-detail">
+                                            <div class="checkbox-container">
+                                                <input type="checkbox" name="selected_products[]" value="<?php echo $row['id_keranjang']; ?>" class="product-checkbox">
+                                            </div>
                                             <!-- Gambar produk -->
                                             <img 
                                                 class="keranjang-produk-gambar" 
@@ -81,7 +81,10 @@ $total_harga = 0;
                                                     <input 
                                                         type="text" 
                                                         class="quantity" 
-                                                        value="<?php echo $row['jumlah']; ?>" 
+                                                        value="<?php echo $row['jumlah']; ?>"
+                                                        min="1" 
+                                                        max="<?php echo $row['stok']; ?>" 
+                                                        data-stok="<?php echo $row['stok']; ?>"  
                                                         readonly
                                                     >
                                                     <!-- Tombol + -->
@@ -143,7 +146,7 @@ $total_harga = 0;
                                 <h1>Total :</h1>
                             </div>
                             <div class="total-harga-semua">
-                                <h1>Rp <?php echo number_format($total_harga, 2, ',', '.'); ?> </h1>
+                                <h1><span id="subtotal"><?php echo number_format($total_harga, 2, ',', '.'); ?></span></h1>
                             </div>
                         </div>
                         <div class="voucher">
@@ -176,19 +179,54 @@ $total_harga = 0;
                 const decreaseBtn = control.querySelector(".quantity-btn-decrease");
                 const increaseBtn = control.querySelector(".quantity-btn-increase");
                 const quantityInput = control.querySelector(".quantity");
+                const maxStock = parseInt(quantityInput.getAttribute("data-stok"), 10);
 
-                decreaseBtn.addEventListener("click", () => {
+                decreaseBtn.addEventListener("click", (event) => {
                     let value = parseInt(quantityInput.value, 10);
                     if (value > 1) {
                         quantityInput.value = value - 1;
                     }
                 });
 
-                increaseBtn.addEventListener("click", () => {
+                increaseBtn.addEventListener("click", (event) => {
                     let value = parseInt(quantityInput.value, 10);
+                    if (maxStock == 0) {
+                        alert("Jumlah produk melebihi stok yang tersedia.");
+                        return; // Hentikan eksekusi
+                    }
                     quantityInput.value = value + 1;
                 });
             });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const checkboxes = document.querySelectorAll(".product-checkbox");
+            const subtotalElement = document.getElementById("subtotal");
+
+            // Update subtotal when checkbox is clicked
+            checkboxes.forEach((checkbox) => {
+                checkbox.addEventListener("change", updateSubtotal);
+            });
+
+            function updateSubtotal() {
+                let subtotal = 0;
+                
+                checkboxes.forEach((checkbox) => {
+                    if (checkbox.checked) {
+                        const row = checkbox.closest("tr");
+                        const priceElement = row.querySelector(".harga-produk p");
+                        const price = parseFloat(priceElement.textContent.replace("Rp", "").replace(/\./g, "").trim());
+                        const quantityInput = row.querySelector(".quantity");
+                        const quantity = parseInt(quantityInput.value, 10);
+                        
+                        subtotal += price * quantity;
+                    }
+                });
+
+                subtotalElement.textContent = subtotal.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+            }
         });
     </script>
 </body>

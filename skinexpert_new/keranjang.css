@@ -167,6 +167,24 @@ main{
     /* gap: 1rem; */
 }
 
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin: 0;  /* Ensure no space around */
+    padding: 0; /* Ensure no space around */
+}
+
+.product-checkbox {
+    margin: 0;  /* Remove margin */
+    padding: 0; /* Remove padding */
+    width: 30px;  /* Adjust width for larger checkbox */
+    height: 30px; /* Adjust height for larger checkbox */
+    transform: scale(1.5); /* Optionally scale it by 1.5x for larger size */
+}
+
+
+
+
 .keranjang-produk-gambar{
     width: 80%;
     margin-right: 4rem;        
