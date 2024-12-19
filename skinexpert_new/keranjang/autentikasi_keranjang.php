@@ -4,7 +4,16 @@ include '../asset/dbskin.php';
 
 if (isset($_POST['submit-keranjang'])) {
     $id_produk = $_POST['id_produk'];
-    $email = 'imam@test.com'; // Ensure user is logged in
+
+    
+    // Periksa apakah pengguna sudah login
+    if (!isset($_SESSION['email'])) {
+        header('Location: login.php'); // Redirect ke halaman login jika belum login
+        exit;
+    }
+
+    // Ambil email pengguna dari sesi
+    $email = $_SESSION['email'];
     $jumlah = 1; // Default quantity
 
     // Check if the product is already in the cart

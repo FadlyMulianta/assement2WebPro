@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_keranjang'])) {
 // Proses hapus semua produk
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['delete_all'])) {
     // Ambil email pengguna dari session atau variabel yang sesuai
-    $email = 'imam@test.com'; // Gantilah dengan email dari session, misalnya: $_SESSION['email']
+    $email = $_SESSION['email'];
 
     // Query untuk menghapus semua produk dalam keranjang berdasarkan email
     $deleteAllQuery = "DELETE FROM keranjang WHERE email = ?";
