@@ -9,7 +9,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 
 include '../asset/dbskin.php';
 
-$sqlStatement = "SELECT * FROM produk  ";
+$sqlStatement = "SELECT * FROM produk LIMIT 4 ";
 $query = mysqli_query($conn, $sqlStatement);
 $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
@@ -348,16 +348,16 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
             bottom: -100px;
             opacity: 0;
         }
+        button:hover .tombol-konsultasi-besar {
+            bottom: 200px;
+            opacity: 1;
+        }
 
         button:hover .tombol-konsultasi {
             bottom: 65px;
             opacity: 1;
         }
 
-        button:hover .tombol-konsultasi-besar {
-            bottom: 200px;
-            opacity: 1;
-        }
 
         .info-dokter-besar :where(a) {
             text-decoration: none;
@@ -444,7 +444,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
             font-size: 1rem;
             margin-top: 2rem;
         }
-        
+
         .tombol-keranjang {
             border-radius: 5px;
             background-color: var(--primary-color);
@@ -541,7 +541,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                         <div class="info-dokter-besar">
                             <h1>Dr. Nama Dokter</h1>
                             <p>jl. sukanogiri no. 1 gang 1</p>
-                            <a href="pilihdokter.html">
+                            <a href="../pembayaran/bayar_dokter.php">
                                 <div class="tombol-konsultasi-besar">
                                     <p>Konsultasi</p>
                                 </div>
@@ -559,9 +559,11 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                 <p>jl. sukanogiri no. 1 gang 1</p>
                             </div>
 
-                            <div class="tombol-konsultasi">
-                                <p>Konsultasi</p>
-                            </div>
+                            <a href="../pembayaran/bayar_dokter.php">
+                                <div class="tombol-konsultasi">
+                                    <p>Konsultasi</p>
+                                </div>
+                            </a>
                         </div>
                     </button>
                     <button>
@@ -571,9 +573,11 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                 <h1>Dr. Nama Dokter</h1>
                                 <p>jl. sukanogiri no. 1 gang 1</p>
                             </div>
-                            <div class="tombol-konsultasi">
-                                <p>Konsultasi</p>
-                            </div>
+                            <a href="../pembayaran/bayar_dokter.php">
+                                <div class="tombol-konsultasi">
+                                    <p>Konsultasi</p>
+                                </div>
+                            </a>
                         </div>
                     </button>
 
@@ -587,9 +591,11 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                 <h1>Dr. Nama Dokter</h1>
                                 <p>jl. sukanogiri no. 1 gang 1</p>
                             </div>
-                            <div class="tombol-konsultasi">
-                                <p>Konsultasi</p>
-                            </div>
+                            <a href="../pembayaran/bayar_dokter.php">
+                                <div class="tombol-konsultasi">
+                                    <p>Konsultasi</p>
+                                </div>
+                            </a>
                         </div>
                     </button>
                     <button>
@@ -599,15 +605,17 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                 <h1>Dr. Nama Dokter</h1>
                                 <p>jl. sukanogiri no. 1 gang 1</p>
                             </div>
-                            <div class="tombol-konsultasi">
-                                <p>Konsultasi</p>
-                            </div>
+                            <a href="../pembayaran/bayar_dokter.php">
+                                <div class="tombol-konsultasi">
+                                    <p>Konsultasi</p>
+                                </div>
+                            </a>
                         </div>
                     </button>
                 </div>
             </div>
             <div class="lihat-semua-top">
-                <a class="lihat-semua" href="">
+                <a class="lihat-semua" href="../pilih-dokter/pilihdokter.php">
                     <div>
                         <h4>Semua Dokter</h4>
                     </div>
@@ -625,7 +633,10 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                 <p>~ Skincare Terbaik Untuk Anda ~</p>
             </div>
             <div class="produk">
-                <?php foreach ($data as $key => $produk) { ?>
+                <?php
+                shuffle($data);
+                foreach ($data as $key => $produk) { 
+                    ?>
 
                     <div class="produk-grid">
                         <div class="produk-gambar">
@@ -717,7 +728,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                 </div> -->
 
             <div class="lihat-semua-top">
-                <a class="lihat-semua" href="">
+                <a class="lihat-semua" href="../produk/produk.php">
                     <div>
                         <h4>Semua Produk</h4>
                     </div>

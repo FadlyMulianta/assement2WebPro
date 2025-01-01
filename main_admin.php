@@ -30,7 +30,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
     <div class="sidebar" id="sidebar">
         <a href="main_admin.php">Daftar Produk</a>
-        <a href="">User</a>
+        <a href="user.php">User</a>
         <a href="toko.php">Daftar Toko</a>
         <a href="iklan.php">Iklan</a>
         <a href="logout_admin.php">Logout</a>

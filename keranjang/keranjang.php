@@ -177,6 +177,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             /* overflow: hidden; */
             width: 100px;
             height: 30px;
+            margin-top: 3.4rem;
         }
 
         .quantity-btn-decrease {
@@ -357,6 +358,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             border-radius: 20px;
             text-decoration: none;
             margin-bottom: 2rem;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -405,7 +407,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                                                             <input type="hidden" name="action" value="decrease">
                                                             <button type="submit" class="quantity-btn-decrease">-</button>
                                                         </form>
-                                                        <input type="text" class="quantity" value="<?php echo $row['jumlah']; ?>" min="1" max="<?php echo $row['stok']; ?>" readonly>
+                                                        <input type="text" class="quantity" value="<?php echo $row['jumlah']; ?>" min="1" max="<?php echo $row['stok']; ?>" data-stok="<?php echo $row['stok']; ?>" readonly>
                                                         <form method="POST" action="../keranjang/update_cart.php" style="display:inline;">
                                                             <input type="hidden" name="id_keranjang" value="<?php echo $row['id_keranjang']; ?>">
                                                             <input type="hidden" name="action" value="increase">
@@ -471,7 +473,11 @@ while ($row = mysqli_fetch_assoc($result)) {
                         </div>
 
                         <div class="bayar">
-                            <button class="btn-bayar">Lanjutkan Ke Pembayaran</button>
+                            <form method="post" action="../pembayaran/bayar_produk.php">
+
+                                <button class="btn-bayar">Lanjutkan Ke Pembayaran</button>
+
+                            </form>
 
                         </div>
 

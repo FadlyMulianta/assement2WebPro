@@ -2,7 +2,7 @@
 
 include '../asset/dbskin.php';
 
-$sqlStatement = "SELECT * FROM produk  ";
+$sqlStatement = "SELECT * FROM produk limit 4 ";
 $query = mysqli_query($conn, $sqlStatement);
 $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
@@ -348,6 +348,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
         .tombol-konsultasi-besar {
 
+            text-decoration: none;
             text-align: center;
             margin-left: 35%;
             margin-right: 35%;
@@ -357,6 +358,15 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
             border-radius: 5px;
             font-size: 1rem;
             margin-top: 2rem;
+            transition: all 0.3s ease-in-out;
+            transform: translateX(0%);
+            bottom: -100px;
+            opacity: 0;
+        }
+
+        button:hover .tombol-konsultasi-besar {
+            bottom: 200px;
+            opacity: 1;
         }
 
         button:hover .tombol-konsultasi {
@@ -393,7 +403,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
         .produk-grid {
             /* padding: 1rem; */
-            
+
             display: grid;
             grid-template-rows: 1fr 1fr;
             justify-content: center;
@@ -621,7 +631,9 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
 
             <div class="produk">
-                <?php foreach ($data as $key => $produk) { ?>
+                <?php 
+                shuffle($data);
+                foreach ($data as $key => $produk) { ?>
 
                     <div class="produk-grid">
                         <div class="produk-gambar">

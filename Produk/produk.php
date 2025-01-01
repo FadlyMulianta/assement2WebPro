@@ -31,68 +31,9 @@ $rbanner = mysqli_fetch_all($qbanner, MYSQLI_ASSOC);
           padding: 0 5rem;
         }
 
-        header{
-          padding: 0 150px;
-          z-index: 99999;
-          background-color: white;
-          position: sticky;
-          top: 0;
-        }
+        
 
-        nav{
-          padding-top: 1rem;
-          /* padding-left: 5rem; */
-          /* padding-right: 4rem;      */
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .logo{
-          
-          /* background-color: yellowgreen; */
-          display: flex;
-
-        }
-
-        .logo img{
-          padding-bottom: 0.5rem;
-          width: 8%;
-          
-        }
-
-        .logo-text{
-          font-weight: bolder;
-          display: flex;
-          margin-top: 0.5rem;
-          /* align-items: center; */
-          font-size: 20px;    
-          text-decoration: none;
-          color: black;
-        }
-
-        .logo-text a{
-          text-decoration: none;
-          color: black;
-        }
-
-
-        .ikon{
-          margin-top: 0.5rem;
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
-          /* background-color: aqua; */
-          
-        }
-
-        .ikon img{
-          justify-content: center;
-          width:50%;
-        }
-
-        .ikon a {
-          margin: 0;
-        }
+        
 
         .banner img {
           width: 100%;
@@ -133,7 +74,7 @@ $rbanner = mysqli_fetch_all($qbanner, MYSQLI_ASSOC);
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-100%);
+            transform: translateX(-150%);
           }
         }
 
@@ -143,6 +84,7 @@ $rbanner = mysqli_fetch_all($qbanner, MYSQLI_ASSOC);
           grid-template-columns: repeat(6, 1fr);
           gap: 50px;
           padding: 50px 0;
+          margin-bottom: 5rem;
         }
 
         .product-card {
@@ -295,7 +237,7 @@ $rbanner = mysqli_fetch_all($qbanner, MYSQLI_ASSOC);
       });
     </script>
     
-    
+    <?php include '../footer.php'; ?>
     
     
   </body>

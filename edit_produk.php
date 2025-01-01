@@ -68,7 +68,8 @@ mysqli_close($conn);
     <div class="sidebar" id="sidebar">
         <a href="main_admin.php">Daftar Produk</a>
         <a href="">User</a>
-        <a href="#settings">Daftar Toko</a>
+        <a href="toko.php">Daftar Toko</a>
+        <a href="iklan.php">Iklan</a>
         <a href="logout_admin.php">Logout</a>
     </div>
 

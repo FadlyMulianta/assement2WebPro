@@ -181,7 +181,9 @@
                                 </b>
                                 <span>⭐ 4,5/5 (130)</span>
                                 <p>Biaya konsultasi<br>Rp 100.000</p>
-                                <button>Konsultasi</button>
+                                <form method="post" action="../pembayaran/bayar_dokter.php">
+                                    <button>Konsultasi</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -210,7 +212,9 @@
                                 </b>
                                 <span>⭐ 4,5/5 (130)</span>
                                 <p>Biaya konsultasi<br>Rp 100.000</p>
-                                <button>Konsultasi</button>
+                                <form method="post" action="../pembayaran/bayar_dokter.php">
+                                    <button>Konsultasi</button>
+                                </form>
                             </div>
                         </div>
 
@@ -238,7 +242,9 @@
                                 <p><b>ULASAN DOKTER</b></p>
                                 <span>⭐ 4,5/5 (130)</span>
                                 <p>Biaya konsultasi<br>Rp 100.000</p>
-                                <button>Konsultasi</button>
+                                <form method="post" action="../pembayaran/bayar_dokter.php">
+                                    <button>Konsultasi</button>
+                                </form>
                             </div>
                         </div>
 
@@ -263,7 +269,9 @@
                                 <p><b>ULASAN DOKTER</b></p>
                                 <span>⭐ 4,5/5 (130)</span>
                                 <p>Biaya konsultasi<br>Rp 100.000</p>
-                                <button>Konsultasi</button>
+                                <form method="post" action="../pembayaran/bayar_dokter.php">
+                                    <button>Konsultasi</button>
+                                </form>
                             </div>
                         </div>
 
@@ -288,7 +296,9 @@
                                 <p><b>ULASAN DOKTER</b></p>
                                 <span>⭐ 4,5/5 (130)</span>
                                 <p>Biaya konsultasi<br>Rp 100.000</p>
-                                <button>Konsultasi</button>
+                                <form method="post" action="../pembayaran/bayar_dokter.php">
+                                    <button>Konsultasi</button>
+                                </form>
                             </div>
                         </div>
 
@@ -313,7 +323,9 @@
                                 <p><b>ULASAN DOKTER</b></p>
                                 <span>⭐ 4,5/5 (130)</span>
                                 <p>Biaya konsultasi<br>Rp 100.000</p>
-                                <button>Konsultasi</button>
+                                <form method="post" action="../pembayaran/bayar_dokter.php">
+                                    <button>Konsultasi</button>
+                                </form>
                             </div>
                         </div>
 

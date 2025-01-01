@@ -1,29 +1,30 @@
 <?php
 include "./asset/dbskin.php";
 if (isset($_POST['btnSimpan'])) {
-    $id_produk = $_POST["id_produk"];
-    $nama_produk = $_POST["nama_produk"];
-    $harga = $_POST["harga"];
-    $stok = $_POST["stok"];
-    $deskripsi_produk = $_POST["deskripsi_produk"];
-    $nama_toko = $_POST["nama_toko"];
-    $gambar_produk = $_FILES['gambar_produk'];
-    if (!empty($gambar_produk['name'])) {
-        $photoName = time() . '_' . $gambar_produk['name'];
-        move_uploaded_file($gambar_produk['tmp_name'], './gambar/' . $photoName);
+    $namadepan = $_POST['namadepan'];
+    $namabelakang = $_POST['namabelakang'];
+    $email = $_POST['email'];
+    $nohp = $_POST['nohp'];
+    $katasandi = $_POST['katasandi'];
+    $hashedPassword = md5($katasandi);
+    $gambar_user = $_FILES['gambar_user'];
+
+    if (!empty($gambar_user['name'])) {
+        $photoName = time() . '_' . $gambar_user['name'];
+        move_uploaded_file($gambar_user['tmp_name'], './gambar/' . $photoName);
     } else {
         $photoName = "";
     }
 
 
 
-    $sqlStatement = "INSERT INTO produk ( nama_produk, harga, stok, deskripsi_produk, gambar_produk, nama_toko,id_kategori) VALUES ( '$nama_produk', '$harga', '$stok', '$deskripsi_produk', '$photoName', '$nama_toko',1)";
+    $sqlStatement = "INSERT INTO user (namadepan,namabelakang,email,nohp,katasandi,gambar_user) VALUES ( '$namadepan', '$namabelakang', '$email', '$nohp', '$hashedPassword', '$photoName')";
     $query = mysqli_query($conn, $sqlStatement);
     if ($query) {
-        $succesMsg = "Penambahan data mahasiswa dengan NIM " . $nama_produk . " berhasil";
+        $succesMsg = "Penambahan data mahasiswa dengan NIM " . $namadepan . " berhasil";
         header("location:main_admin.php?successMsg=$succesMsg");
     } else {
-        $errMsg = "Penambahan data mahasiswa dengan NIM " . $nama_produk . " GAGAL !" . mysqli_error($conn);
+        $errMsg = "Penambahan data mahasiswa dengan NIM " . $namadepan . " GAGAL !" . mysqli_error($conn);
     }
 
     mysqli_close($conn);
@@ -35,10 +36,11 @@ if (isset($_POST['btnSimpan'])) {
 // $query = mysqli_query($conn, $sqlStatement);
 // $dtprodi = mysqli_fetch_all($query, MYSQLI_ASSOC);
 // print_r($dtprodi);
-$sqlStatement = "SELECT * FROM toko";
-$query = mysqli_query($conn, $sqlStatement);
-$dttoko = mysqli_fetch_all($query, MYSQLI_ASSOC);
-mysqli_close($conn);
+
+// $sqlStatement = "SELECT * FROM toko";
+// $query = mysqli_query($conn, $sqlStatement);
+// $dttoko = mysqli_fetch_all($query, MYSQLI_ASSOC);
+// mysqli_close($conn);
 
 
 ?>
@@ -80,7 +82,7 @@ mysqli_close($conn);
 
         <div class="row mt-3 mb-4">
             <div class="col-md-6">
-                <h4>Tambah Produk</h4>
+                <h4>Tambah User</h4>
             </div>
         </div>
         <?php
@@ -94,72 +96,59 @@ mysqli_close($conn);
         ?>
         <form method="post" enctype="multipart/form-data">
 
-            <div v class="mb-1 row">
-                <div class="col-auto">
-                    <input type="hidden" class="form-control" name="id_produk" placeholder="Nama Produk">
-                </div>
-            </div>
+            
+            
+            
             <div v class="mb-1 row">
                 <div class="col-2">
-                    <label for="nim" class="col-form-label">Nama Produk</label>
+                    <label for="nim" class="col-form-label">Nama Depan</label>
                 </div>
                 <div class="col-auto">
-                    <input type="text" class="form-control" name="nama_produk" placeholder="Nama Produk" required>
+                    <input type="text" class="form-control" name="namadepan" placeholder="Nama Depan" required>
+                </div>
+            </div>
+            
+            <div class="mb-1 row">
+                <div class="col-2">
+                    <label for="nim" class="col-form-label">Nama Belakang</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" class="form-control" name="namabelakang" placeholder="Nama Belakang" required>
+                </div>
+            </div>
+            
+            <div v class="mb-1 row">
+                <div class="col-2">
+                    <label for="nim" class="col-form-label">Email</label>
+                </div>
+                <div class="col-auto">
+                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                </div>
+            </div>
+            <div class="mb-1 row">
+                <div class="col-2">
+                    <label for="nim" class="col-form-label">No Hp</label>
+                </div>
+                <div class="col-auto">
+                    <input type="number" class="form-control" name="nohp" placeholder="No Hp" required>
                 </div>
             </div>
 
             <div class="mb-1 row">
                 <div class="col-2">
-                    <label for="nim" class="col-form-label">Harga Produk</label>
+                    <label for="nim" class="col-form-label">Kata Sandi</label>
                 </div>
                 <div class="col-auto">
-                    <input type="number" class="form-control" name="harga" placeholder="Harga Produk" required>
+                    <input type="password" class="form-control" name="katasandi" placeholder="Kata Sandi" required>
                 </div>
             </div>
-
+            
             <div class="mb-1 row">
                 <div class="col-2">
-                    <label for="nim" class="col-form-label">Stok Produk</label>
+                    <label for="foto" class="col-form-label">Gambar User</label>
                 </div>
                 <div class="col-auto">
-                    <input type="number" class="form-control" name="stok" placeholder="Stok Produk" required>
-                </div>
-            </div>
-
-            <div class="mb-1 row">
-                <div class="col-2">
-                    <label for="nim" class="col-form-label">Deskripsi Produk</label>
-                </div>
-                <div class="col-auto">
-                    <input type="text" class="form-control" name="deskripsi_produk" placeholder="Deskripsi Produk" required>
-                </div>
-            </div>
-            <div class="mb-1 row">
-                <div class="col-2">
-                    <label for="nim" class="col-form-label">Nama Toko</label>
-                </div>
-                <div class="col-auto">
-                    <select name="nama_toko" id="nama_toko" class="form-select" required>
-                        <?php
-                        foreach ($dttoko as $key => $toko) {
-
-                        ?>
-                            <option value="<?= $toko['nama_toko'] ?>"><?= $toko['nama_toko'] ?></option>
-
-                        <?php
-                        }
-
-                        ?>
-
-                    </select>
-                </div>
-            </div>
-            <div class="mb-1 row">
-                <div class="col-2">
-                    <label for="foto" class="col-form-label">Gambar Produk</label>
-                </div>
-                <div class="col-auto">
-                    <input type="file" class="form-control" id="foto" name="gambar_produk">
+                    <input type="file" class="form-control" id="foto" name="gambar_user">
                 </div>
             </div>
 
@@ -174,7 +163,7 @@ mysqli_close($conn);
         </form>
         <div class="row mt-4 mb-4 ">
 
-            <a class="btn btn-warning" href="main_admin.php">Kembali</a>
+            <a class="btn btn-warning" href="user.php">Kembali</a>
         </div>
 
 

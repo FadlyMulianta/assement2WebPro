@@ -1,0 +1,139 @@
+*{
+    overscroll-behavior: none;
+}
+
+:root {
+    --primary-color: #1C3F60; 
+    --secondary-color: #ffff; 
+    --text-color: #333; 
+    --text-color-secondary: #ffff; 
+    --back-color: #DBE2EF; 
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    z-index: 1000;
+    padding: 20px 30px;
+    background-color: #f5f5f5;
+}
+
+.header {
+    width: 100%;
+    margin: 0 auto; /* Ini akan memastikan header terpusat */
+}
+
+
+.ikon-x i {
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.main {
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.title h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.biaya {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #000000;
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.profile-img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.total-tagihan {
+    margin-left: auto;
+    text-align: right;
+}
+
+.payment-method {
+    display: grid;
+    gap: 15px;
+}
+
+.method {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid #dbe2ef;
+    border-radius: 10px;
+    background-color: var(--back-color);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.method:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.method img {
+    width: 30px;
+    height: 30px;
+}
+
+.saldo {
+    margin-left: auto;
+    text-align: right;
+}
+
+.footer {
+
+    text-align: center;
+    padding: 20px;
+    background-color: var(--primary-color);
+}
+
+.pay-btn {
+    padding: 10px 20px;
+    background-color: #6a9ded;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+.pay-btn a{
+    color: white;    
+}
+
+.pay-btn:hover {
+    background-color: #6a9ded;
+    color: white;
+}
+
+.a-btn{
+    text-decoration: none;
+    color: var(--text-color);
+}

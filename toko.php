@@ -23,8 +23,9 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 <body>
     <div class="sidebar" id="sidebar">
         <a href="main_admin.php">Daftar Produk</a>
-        <a href="">User</a>
-        <a href="#settings">Daftar Toko</a>
+        <a href="user.php">User</a>
+        <a href="toko.php">Daftar Toko</a>
+        <a href="iklan.php">Iklan</a>
         <a href="logout_admin.php">Logout</a>
     </div>
 
@@ -40,7 +41,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
         <div class="row mt-4 mb-4 ">
 
-            <a class="btn btn-primary" href="add_produk.php"> Tambah Produk</a>
+            <a class="btn btn-primary" href="add_toko.php"> Tambah toko</a>
         </div>
         <table class="table table-striped table-hover">
             <thead align="center">
@@ -48,6 +49,7 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                 <th>Nama Toko</th>
                 <th>Alamat Toko</th>
                 <th>Kontak Toko</th>
+                <th>Aksi</th>
 
             </thead>
             <tbody>
@@ -57,10 +59,10 @@ $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
                     <tr>
                         <td align="center"><?= $toko["id_toko"] ?></td>
                         <td align="center"><?= $toko["nama_toko"] ?></td>
-                
+
                         <td align="center"><?= $toko["alamat_toko"] ?></td>
                         <td align="center"><?= $toko["kontak_toko"] ?></td>
-                    
+
                         <td align="center">
                             <a href="edit_toko.php?id_toko=<?= $toko['id_toko'] ?>" class="btn btn-sm btn-success">Edit</a>
                             <a href="hapus_toko.php?id_toko=<?= $toko['id_toko'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin akan menghapus?')">Delete</a>

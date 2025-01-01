@@ -2,7 +2,7 @@
 $host = "localhost:3308";
 $user = "root";
 $pass = "";
-$dbname = "db_skinnew";
+$dbname = "chat_app";
 $conn = mysqli_connect($host, $user, $pass, $dbname);
 
 if (!$conn) {

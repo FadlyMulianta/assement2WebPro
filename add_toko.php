@@ -9,7 +9,7 @@ if (isset($_POST['btnSimpan'])) {
 
 
     // If a new image is uploaded
-    $sqlStatement = "update toko set nama_toko='$nama_toko',alamat_toko='$alamat_toko',kontak_toko='$kontak_toko' where id_toko='$id_toko'";
+    $sqlStatement = "insert into toko (nama_toko,alamat_toko,kontak_toko) values('$nama_toko','$alamat_toko','$kontak_toko')";
 
     // Execute the query
     $query = mysqli_query($conn, $sqlStatement);
@@ -24,16 +24,13 @@ if (isset($_POST['btnSimpan'])) {
 }
 
 /** Cari produk */
-$id_toko = $_GET['id_toko'];
-$sqlStatement = "SELECT * FROM toko WHERE id_toko='$id_toko'";
+
+
+
+$sqlStatement = "SELECT * FROM toko ";
 $query = mysqli_query($conn, $sqlStatement);
+$dttoko = mysqli_fetch_all($query, MYSQLI_ASSOC);
 $row = mysqli_fetch_assoc($query);
-
-
-// $sqlStatement = "SELECT * FROM toko ";
-// $query = mysqli_query($conn, $sqlStatement);
-// $dttoko = mysqli_fetch_all($query, MYSQLI_ASSOC);
-// $row = mysqli_fetch_assoc($query);
 
 
 
@@ -74,7 +71,7 @@ $row = mysqli_fetch_assoc($query);
 
         <div class="row mt-3 mb-4">
             <div class="col-md-6">
-                <h4>Edit Data Toko</h4>
+                <h4>Tambah Data Toko</h4>
             </div>
         </div>
         <?php
@@ -87,21 +84,13 @@ $row = mysqli_fetch_assoc($query);
         }
         ?>
         <form method="post" enctype="multipart/form-data">
-            <div class="mb-1 row">
-                <div class="col-2">
-                    <label for="id_produk" class="col-form-label">Id Toko</label>
-                </div>
-                <div class="col-auto">
-                    <input type="text" class="form-control" id="id_toko" name="id_toko" disabled value="<?= $row["id_toko"] ?>" required>
-                </div>
-            </div>
 
             <div class="mb-1 row">
                 <div class="col-2">
                     <label for="nama_produk" class="col-form-label">Nama Toko</label>
                 </div>
                 <div class="col-auto">
-                    <input type="text" class="form-control" id="nama_toko" name="nama_toko" value="<?= $row["nama_toko"] ?>" required>
+                    <input type="text" class="form-control" id="nama_toko" name="nama_toko" placeholder="nama toko" required>
                 </div>
             </div>
             <div class="mb-1 row">
@@ -109,7 +98,7 @@ $row = mysqli_fetch_assoc($query);
                     <label for="" class="col-form-label">Alamat Toko</label>
                 </div>
                 <div class="col-auto">
-                    <input type="text" class="form-control" id="alamat_toko" name="alamat_toko" value="<?= $row["alamat_toko"] ?>" required>
+                    <input type="text" class="form-control" id="alamat_toko" name="alamat_toko" placeholder="alamat toko" required>
                 </div>
             </div>
             <div class="mb-1 row">
@@ -117,7 +106,7 @@ $row = mysqli_fetch_assoc($query);
                     <label for="stok" class="col-form-label">Kontak Toko</label>
                 </div>
                 <div class="col-auto">
-                    <input type="text" class="form-control" id="kontak_toko" name="kontak_toko" value="<?= $row["kontak_toko"] ?>" required>
+                    <input type="text" class="form-control" id="kontak_toko" name="kontak_toko" placeholder="kontak toko" required>
                 </div>
             </div>
 

@@ -258,7 +258,7 @@ $user = mysqli_fetch_assoc($result);
                     id="profile-pic"
                     alt="Foto profil" 
                     class="profile-pic" 
-                    src="../profil/gambar/<?php echo htmlspecialchars($user['gambar_user']); ?>"
+                    src="../Profil/gambar/<?php echo htmlspecialchars($user['gambar_user']); ?>"
                     onclick="document.getElementById('gambar_user').click();" 
                   />
                   <div class="edit-icon">

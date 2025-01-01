@@ -223,7 +223,7 @@ padding-right: 4rem;      */
             <li><a href="../profil/profil.php">Profil Saya</a></li>
             <li><a href="#">Detail Pesanan</a></li>
             <li><a href="hasilAi.html">Hasil Scan AI</a></li>
-            <li><a href="../Setting/index.html">Settings</a></li>
+            <li><a href="../Setting/setting.php">Settings</a></li>
             <li><a href="../regis-login/logout.php">Logout</a></li>
         </ul>
 
@@ -267,11 +267,9 @@ padding-right: 4rem;      */
             document.getElementById("scan").classList.add("active");
         } else if (currentUrl.includes("pilihdokter.php")) {
             document.getElementById("konsultasi").classList.add("active");
-        } else if (currentUrl.includes("skincare.php")) {
+        } else if (currentUrl.includes("produk.php")) {
             document.getElementById("skincare").classList.add("active");
-        } else if (currentUrl.includes("keranjang.php")) {
-            document.getElementById("keranjang").classList.add("active");
-        }
+        } 
     </script>
     
 
